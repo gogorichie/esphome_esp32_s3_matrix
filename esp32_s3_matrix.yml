@@ -1,18 +1,18 @@
+# These substitutions allow the end user to override certain values
 substitutions:
-  name: esphome-web-1w3f40
+  name: esp32_s3_matrix
   friendly_name: esp32_s3_matrix
 
 esphome:
   name: ${name}
   friendly_name: ${friendly_name}
   min_version: 2024.6.0
-  name_add_mac_suffix: false
+  name_add_mac_suffix: true
   platformio_options:
     board_build.flash_mode: dio
   project:
     name: esphome.web
     version: dev
-
 
 api:
   encryption:
