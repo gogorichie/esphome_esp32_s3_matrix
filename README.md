@@ -79,7 +79,7 @@ This allows you to extend the functionality by importing additional configuratio
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/gogorichie/esphome_esp32_s3_matrix/blob/main/LICENSE) file for details.
+This project uses the Unlicensed terms and conditions. See the [LICENSE](https://github.com/gogorichie/esphome_esp32_s3_matrix/blob/main/LICENSE) file for details.
 
 ---
 
