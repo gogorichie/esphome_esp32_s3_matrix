@@ -1,6 +1,6 @@
 # ESP32 S3 Matrix 8x8 64 LED Configuration
 
-This repository contains an ESPHome configuration for an ESP32-S3-based with 8x8 Onboard 8×8 RGB LED Matrix. The configuration uses the WS2812B LED chipset and supports various addressable light effects. This setup is ideal for creating colorful light displays, animations, and more, controlled over Wi-Fi. 
+This repository contains an ESPHome configuration for an [ESP32-S3-based with 8x8 Onboard 8×8 RGB LED Matrix](https://amzn.to/4dEgk37). The configuration uses the WS2812B LED chipset and supports various addressable light effects. This setup is ideal for creating colorful light displays, animations, and more, controlled over Wi-Fi. 
 
 ## Features
 
@@ -13,7 +13,7 @@ This repository contains an ESPHome configuration for an ESP32-S3-based with 8x8
 
 ## Requirements
 
-- **ESP32-S3 Matrix ESP32 S3 Development Board with 8×8 RGB LED Matrix**: This configuration is designed for the ESP32-S3-Matrix Development Board, Based on ESP32-S3, Onboard 8×8 RGB LED Matrix.
+- **ESP32-S3-Matrix**: This configuration is designed for the ESP32-S3-Matrix Development Board, Based on ESP32-S3, Onboard 8×8 RGB LED Matrix.
 - **ESPHome**: Version 2024.6.0 or later.
 
 ## Configuration
