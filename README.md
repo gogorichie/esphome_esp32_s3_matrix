@@ -2,6 +2,8 @@
 
 This repository contains an ESPHome configuration for an [ESP32-S3-based with 8x8 Onboard 8×8 RGB LED Matrix](https://amzn.to/4dEgk37). The configuration uses the WS2812B LED chipset and supports various addressable light effects. This setup is ideal for creating colorful light displays, animations, and more, controlled over Wi-Fi. 
 
+![ESP32 S3 Matrix 8x8 64 LED](https://github.com/gogorichie/esphome_esp32_s3_matrix/blob/esp32_s3_matrix/esp32-s3-matrix-5.jpg)
+
 ## Features
 
 - **ESPHome Integration**: Easily integrate with Home Assistant or other ESPHome-compatible platforms.
