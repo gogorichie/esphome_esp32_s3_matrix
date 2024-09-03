@@ -4,14 +4,6 @@ This repository contains an ESPHome configuration for an [ESP32-S3-based with 8x
 
 ![ESP32 S3 Matrix 8x8 64 LED](https://github.com/gogorichie/esphome_esp32_s3_matrix/blob/esp32_s3_matrix/esp32-s3-matrix-5.jpg)
 
-## Features
-
-- **ESPHome Integration**: Easily integrate with Home Assistant or other ESPHome-compatible platforms.
-- **Over-The-Air Updates**: Update the firmware wirelessly using the ESPHome dashboard.
-- **Wi-Fi Provisioning**: Supports Wi-Fi provisioning via Bluetooth LE or a captive portal.
-- **Multiple Light Effects**: Includes various built-in light effects like rainbow, color wipe, twinkle, and fireworks.
-- **API Encryption**: Secure communication with an encrypted API key.
-- **Web Server**: Simple web interface to manage your device.
 
 ## Requirements
 
