@@ -91,3 +91,46 @@ light:
       - addressable_flicker:
       - addressable_fireworks:
           name: Fireworks
+      - addressable_lambda:
+          name: "Green Tick"
+          update_interval: 5s
+          lambda: |-
+            for (int i = 0; i < it.size(); i++) {
+              it[i] = ESPColor(0, 0, 0);
+            } // Clear display
+
+            std::vector<uint8_t> tick = {
+              7,             // row 0
+              14, 15,        // row 1
+              21, 22,        // row 2
+              24, 28, 29,    // row 3
+              32, 33, 35, 36,// row 4
+              41, 42, 43,    // row 5
+              50             // row 6
+            };
+            for (auto i : tick) {
+              it[i] = ESPColor(0, 255, 0);
+            }
+
+      - addressable_lambda:
+          name: "Red No Entry"
+          update_interval: 5s
+          lambda: |-
+            for (int i = 0; i < it.size(); i++) {
+              it[i] = ESPColor(0, 0, 0);
+            } // Clear display
+
+            // Red no entry
+            std::vector<uint8_t> ring = {
+              2, 3, 4, 5,    // row 0
+              9, 14,         // row 1
+              16, 21, 23,    // row 2
+              24, 28, 31,    // row 3
+              32, 35, 39,    // row 4
+              40, 42, 47,    // row 5
+              49, 54,        // row 6
+              58, 59, 60, 61 // row 7
+            };
+            for (auto i : ring) {
+              it[i] = ESPColor(255, 0, 0);  // Red
+            }
