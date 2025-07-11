@@ -99,7 +99,7 @@ light:
               it[i] = ESPColor(0, 0, 0);
             } // Clear display
 
-            std::vector<uint8_t> tick = {
+            static const std::vector<uint8_t> tick = {
               7,             // row 0
               14, 15,        // row 1
               21, 22,        // row 2
