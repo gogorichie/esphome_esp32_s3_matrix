@@ -50,7 +50,7 @@ The configuration supports the following light effects:
 - **Flicker**
 - **Fireworks**
 - **Green Tick**
-- **Red No Netry**
+- **Red No Entry**
 
 ### Provisioning and OTA
 
