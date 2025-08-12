@@ -49,6 +49,8 @@ The configuration supports the following light effects:
 - **Twinkle**
 - **Flicker**
 - **Fireworks**
+- **Green Tick**
+- **Red No Entry**
 
 ### Provisioning and OTA
 
