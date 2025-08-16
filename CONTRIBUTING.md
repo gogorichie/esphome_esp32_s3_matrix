@@ -50,7 +50,7 @@ git checkout -b fix/short-description
 - Keep commits small and meaningful. Conventional Commits are appreciated:
   - feat: add new matrix effect
   - fix: correct GPIO for LED data pin
-  - docs: clarify Wi‑Fi secrets usage
+  - docs: clarify Wi-Fi secrets usage
 
 - Open a PR:
   - Fill out the PR template details (what changed, why, and testing notes).
