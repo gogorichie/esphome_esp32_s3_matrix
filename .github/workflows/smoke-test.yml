@@ -1,0 +1,40 @@
+name: Smoke Test (ESPHome config)
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smoke-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-config:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare stub secrets.yaml for validation
+        run: |
+          set -e
+          cat > secrets.yaml <<'YAML'
+          wifi_ssid: "test-ssid"
+          wifi_password: "test-password"
+          api_encryption_key: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          YAML
+
+      - name: Smoke test — validate ESPHome config
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/config" \
+            -w /config \
+            esphome/esphome:2024.6.0 \
+            config esp32_s3_matrix.yml

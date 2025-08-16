@@ -1,29 +1,69 @@
+name: Community Welcome
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened, closed]
+
 permissions:
   contents: read
   issues: write
   pull-requests: write
-name: Welcome
-on:
-  pull_request:
-    types: [opened, closed]
-  issues:
-    types: [opened]
+
+# Prevent duplicate posts if GitHub retries webhooks
+concurrency:
+  group: welcome-${{ github.event_name }}-${{ github.event.pull_request.number || github.event.issue.number || 'n/a' }}
+  cancel-in-progress: false
+
 jobs:
-  run:
+  issue-welcome:
+    if: >
+      github.event_name == 'issues' &&
+      github.event.action == 'opened' &&
+      !contains(github.actor, '[bot]')
     runs-on: ubuntu-latest
     steps:
       - uses: wow-actions/welcome@v1
         with:
           FIRST_ISSUE: |
             👋 @{{ author }}
-             Thanks for opening your first issue here! Be sure to follow the issue template!
+            Thanks for opening your first issue!
+            Please follow the template and include repro details.
 
+            📘 Contributing guide:
+            ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.event.repository.default_branch }}/CONTRIBUTING.md
+
+  pr-welcome:
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.action == 'opened' &&
+      !contains(github.actor, '[bot]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wow-actions/welcome@v1
+        with:
           FIRST_PR: |
             👋 @{{ author }}
-            Thanks for opening this pull request! Please check out our contributing guidelines.
+            Thanks for your first pull request!
+            Run the linters and tests, then tag a reviewer.
 
+            📘 Contributing guide:
+            ${{ github.server_url }}/${{ github.repository }}/blob/${{ github.event.repository.default_branch }}/CONTRIBUTING.md
+
+  pr-congrats-merged:
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.action == 'closed' &&
+      github.event.pull_request.merged == true &&
+      !contains(github.actor, '[bot]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wow-actions/welcome@v1
+        with:
           FIRST_PR_MERGED: |
             🎉 @{{ author }}
-            Congrats on merging your first pull request! We here at behaviorbot are proud of you!
+            First PR merged — solid work.
+            Keep them coming.
 
-          STAR_MESSAGE: If you like this project, please ⭐star⭐ our repo.
+          STAR_MESSAGE: If this helped you, please ⭐ star the repo.
