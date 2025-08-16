@@ -28,7 +28,7 @@ jobs:
           cat > secrets.yaml <<'YAML'
           wifi_ssid: "test-ssid"
           wifi_password: "test-password"
-          api_encryption_key: "00000000000000000000000000000000"
+          api_encryption_key: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
           YAML
 
       - name: Smoke test — validate ESPHome config
