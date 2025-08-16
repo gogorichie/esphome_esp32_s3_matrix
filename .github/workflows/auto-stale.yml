@@ -35,7 +35,7 @@ jobs:
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
     - name: Clean up stale branches
-      uses: crs-k/stale-branches@v8.2.0
+      uses: crs-k/stale-branches@v8.2.1
       with:
         repo-token: '${{ secrets.GITHUB_TOKEN }}'
         days-before-stale: 120
