@@ -59,7 +59,7 @@ git checkout -b fix/short-description
 
 ## Automated workflows you should know about
 
-- Dependabot updates may be auto‑approved/merged when safe.
+- Dependabot updates may be auto-approved/merged when safe.
 - Stale issues/PRs are auto‑labeled and may be closed after inactivity.
 
 ## Coding/style notes
