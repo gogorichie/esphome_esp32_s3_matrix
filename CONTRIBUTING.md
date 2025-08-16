@@ -1,56 +1,9 @@
 # Contributing to esphome_esp32_s3_matrix
 
-Thanks for your interest in improving this project! This repo contains a simple ESPHome configuration plus a few GitHub workflows. Small contributions are welcome.
-
-## Ways to contribute
-
-- Open an issue for bugs, docs fixes, or feature ideas (please use the provided templates).
-- Submit a pull request (PR) with a focused change.
+Thanks for your interest in improving this project! This repo contains a simple ESPHome configuration plus a few GitHub workflows. all contributions are welcome.
 
 
-### 1) Install ESPHome CLI
-
-- Python 3.11+ is recommended.
-- On Windows (PowerShell):
-
-```powershell
-# Option A: pipx (recommended)
-pipx install esphome
-
-# Option B: pip (user install)
-python -m pip install --user esphome
-```
-
-Verify installation:
-
-```powershell
-esphome --version
-```
-
-### 2) Validate and/or compile the config
-
-From the repository root:
-
-```powershell
-# Validate YAML and device config
-esphome config .\esp32_s3_matrix.yml
-
-# Optional: compile firmware locally
-esphome compile .\esp32_s3_matrix.yml
-```
-
-## Branching, commits, and PRs
-
-- Create a feature branch from the latest default branch (main):
-
-```powershell
-git checkout -b fix/short-description
-```
-
-- Keep commits small and meaningful. Conventional Commits are appreciated:
-  - feat: add new matrix effect
-  - fix: correct GPIO for LED data pin
-  - docs: clarify Wi-Fi secrets usage
+### How To Contribute
 
 - Open a PR:
   - Fill out the PR template details (what changed, why, and testing notes).
@@ -59,8 +12,10 @@ git checkout -b fix/short-description
 
 ## Automated workflows you should know about
 
-- Dependabot updates may be auto-approved/merged when safe.
-- Stale issues/PRs are auto‑labeled and may be closed after inactivity.
+- **Smoke Test**: Validates ESPHome configuration on every PR to ensure it's valid before merging.
+- **Dependabot**: Updates may be auto-approved/merged when safe.
+- **Stale**: Issues/PRs are auto‑labeled and may be closed after inactivity.
+- **Release**: Creates GitHub releases automatically when tags starting with "v" are pushed.
 
 ## Coding/style notes
 
