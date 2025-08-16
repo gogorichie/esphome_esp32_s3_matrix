@@ -10,7 +10,6 @@ This repository contains an ESPHome configuration for an [ESP32-S3-based with 8x
 - **ESP32-S3-Matrix**: This configuration is designed for the ESP32-S3-Matrix Development Board, Based on ESP32-S3, Onboard 8×8 RGB LED Matrix.
 - **ESPHome**: Version 2024.6.0 or later.
 
-## Configuration
 
 ### Substitutions
 
