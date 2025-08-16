@@ -26,7 +26,11 @@ jobs:
         if: ${{ !secrets.ACCESS_TOKEN }}
         run: |
           echo "ACCESS_TOKEN is missing. Define it in Settings > Secrets and variables > Actions."
-          exit 1
+        run: |
+          if [ -z "${ACCESS_TOKEN}" ]; then
+            echo "ACCESS_TOKEN is missing. Define it in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
 
       - name: Dependabot Auto-Merge
         uses: ahmadnassri/action-dependabot-auto-merge@v2
