@@ -65,7 +65,7 @@ git checkout -b fix/short-description
 ## Coding/style notes
 
 - Keep YAML clear and commented where it aids users.
-- Prefer sensible defaults that work for the target board (ESP32‑S3 matrix).
+- Prefer sensible defaults that work for the target board (ESP32-S3 matrix).
 - Avoid committing secrets; use `!secret` and document required keys.
 
 ## License
