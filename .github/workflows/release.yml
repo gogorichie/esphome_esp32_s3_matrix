@@ -26,6 +26,6 @@ jobs:
             esp32_s3_matrix.yml
             README.md
           make_latest: true
-          name: Release ${{ github.ref_name }}
+          name: Release ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
