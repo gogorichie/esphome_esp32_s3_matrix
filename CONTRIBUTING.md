@@ -15,7 +15,7 @@ Thanks for your interest in improving this project! This repo contains a simple 
 - **Smoke Test**: Validates ESPHome configuration on every PR to ensure it's valid before merging.
 - **Dependabot**: Updates may be auto-approved/merged when safe.
 - **Stale**: Issues/PRs are auto‑labeled and may be closed after inactivity.
-- **Release**: Creates GitHub releases automatically when tags starting with "v" are pushed.
+- **Release**: Creates GitHub releases automatically when changes are pushed to the main branch.
 
 ## Coding/style notes
 
