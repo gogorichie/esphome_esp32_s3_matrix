@@ -3,7 +3,8 @@ name: Create Release
 on:
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'  # Semantic versioning pattern: v1.2.3
+      - 'v[0-9]+.[0-9]+.[0-9]+'  # Semantic versioning pattern: v1.2.3, v1.2.3-alpha, v1.2.3-beta.1, etc.
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'  # Pre-release versions with suffix
 
 
 jobs:
@@ -23,9 +24,10 @@ jobs:
           TAG="${GITHUB_REF#refs/tags/}"
           echo "Processing tag: $TAG"
           
-          # Validate semantic version format (v1.2.3 or v1.2.3-alpha, v1.2.3-beta.1, etc.)
-          if ! echo "$TAG" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9\.]+)?$'; then
-            echo "Error: Tag '$TAG' does not follow semantic versioning format (vX.Y.Z)"
+          # Validate semantic version format (v1.2.3 or v1.2.3-alpha.beta.1, etc.)
+          # Pre-release identifiers are alphanumeric and separated by dots
+          if ! echo "$TAG" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*)?$'; then
+            echo "Error: Tag '$TAG' does not follow semantic versioning format (vX.Y.Z or vX.Y.Z-prerelease)"
             exit 1
           fi
           
