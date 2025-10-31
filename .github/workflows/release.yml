@@ -2,9 +2,8 @@ name: Create Release
 
 on:
   push:
-    branches:
     tags:
-      - 'v*'
+      - 'v[0-9]+.[0-9]+.[0-9]+'  # Semantic versioning pattern: v1.2.3
 
 
 jobs:
@@ -19,6 +18,19 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for better release notes
 
+      - name: Validate semantic version
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "Processing tag: $TAG"
+          
+          # Validate semantic version format (v1.2.3 or v1.2.3-alpha, v1.2.3-beta.1, etc.)
+          if ! echo "$TAG" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9\.]+)?$'; then
+            echo "Error: Tag '$TAG' does not follow semantic versioning format (vX.Y.Z)"
+            exit 1
+          fi
+          
+          echo "Tag '$TAG' is a valid semantic version"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2.3.3
         with:
@@ -27,6 +39,6 @@ jobs:
             esp32_s3_matrix.yml
             README.md
           make_latest: true
-          name: Release ${{ github.sha }}
+          name: Release ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
