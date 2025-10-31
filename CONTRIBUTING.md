@@ -24,6 +24,8 @@ This project uses semantic versioning for releases. To create a new release:
 1. **Choose a version number** following [Semantic Versioning](https://semver.org/):
    - `vMAJOR.MINOR.PATCH` (e.g., `v1.0.0`, `v2.1.3`)
    - For pre-releases, add a suffix: `v1.0.0-alpha`, `v1.0.0-beta.1`, `v2.0.0-rc.1`
+   - Build metadata is also supported: `v1.0.0+20130313`, `v1.0.0-beta+exp.sha.5114f85`
+   - Version numbers must not have leading zeros (except `0` itself)
 
 2. **Create and push a tag**:
    ```bash

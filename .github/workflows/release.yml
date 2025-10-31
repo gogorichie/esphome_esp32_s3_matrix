@@ -23,16 +23,21 @@ jobs:
           TAG="${GITHUB_REF#refs/tags/}"
           echo "Processing tag: $TAG"
           
-          # Semantic version pattern: vX.Y.Z or vX.Y.Z-prerelease.identifiers
-          # Pre-release identifiers must be alphanumeric and separated by dots
-          SEMVER_PATTERN='^v[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*)?$'
+          # Semantic versioning pattern per https://semver.org/
+          # Format: vMAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]
+          # - Version numbers: no leading zeros (except for 0 itself)
+          # - Pre-release: alphanumeric and hyphens, separated by dots
+          # - Build metadata: not validated (usually ignored in git tags)
+          SEMVER_PATTERN='^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$'
           
           if ! echo "$TAG" | grep -qE "$SEMVER_PATTERN"; then
-            echo "Error: Tag '$TAG' does not follow semantic versioning format (vX.Y.Z or vX.Y.Z-prerelease)"
+            echo "Error: Tag '$TAG' does not follow semantic versioning format"
+            echo "Expected: vX.Y.Z or vX.Y.Z-prerelease or vX.Y.Z+build"
+            echo "See https://semver.org/ for details"
             exit 1
           fi
           
-          echo "Tag '$TAG' is a valid semantic version"
+          echo "✓ Tag '$TAG' is a valid semantic version"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2.3.3
