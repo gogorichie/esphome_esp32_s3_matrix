@@ -2,9 +2,8 @@ name: Create Release
 
 on:
   push:
-    branches:
     tags:
-      - 'v*'
+      - 'v[0-9]*.[0-9]*.[0-9]*'  # Match semantic version tags (v1.2.3, v1.2.3-alpha, etc.)
 
 
 jobs:
@@ -19,6 +18,27 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for better release notes
 
+      - name: Validate semantic version
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "Processing tag: $TAG"
+          
+          # Semantic versioning pattern per https://semver.org/
+          # Format: vMAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]
+          # - Version numbers: no leading zeros (except for 0 itself)
+          # - Pre-release: alphanumeric and hyphens, separated by dots
+          # - Build metadata: alphanumeric and hyphens, separated by dots
+          SEMVER_PATTERN='^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$'
+          
+          if ! echo "$TAG" | grep -qE "$SEMVER_PATTERN"; then
+            echo "Error: Tag '$TAG' does not follow semantic versioning format"
+            echo "Expected: vX.Y.Z or vX.Y.Z-prerelease or vX.Y.Z+build"
+            echo "See https://semver.org/ for details"
+            exit 1
+          fi
+          
+          echo "✓ Tag '$TAG' is a valid semantic version"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2.5.0
         with:
@@ -27,6 +47,6 @@ jobs:
             esp32_s3_matrix.yml
             README.md
           make_latest: true
-          name: Release ${{ github.sha }}
+          name: Release ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
