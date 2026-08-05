@@ -1,6 +1,6 @@
 # Dependabot configuration
 #
-# Cadence:  one batched run per month — the 28th at 20:00 America/Chicago.
+# Cadence:  one batched run per month at 03:00 America/Los_Angeles.
 # Grouping: every update an ecosystem manages lands in a single pull request,
 #           so routine maintenance is one review, not a stream of them.
 # Security: Dependabot security updates are NOT bound by this schedule or by
@@ -21,9 +21,10 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "cron"
-      cronjob: "0 20 28 * *" # 28th of the month, 8:00 PM
-      timezone: "America/Chicago"
+      interval: "monthly"
+      day: "sunday"
+      time: "03:00"
+      timezone: "America/Los_Angeles"
     # Let a release sit for a week before adopting it, so the community has a
     # chance to surface bad publishes. Never applied to security updates.
     cooldown:
